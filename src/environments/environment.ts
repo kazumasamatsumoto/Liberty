@@ -2,19 +2,32 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {
+  IS_APIKEY,
+  IS_AUTHDOMAIN,
+  IS_DATABASEURL,
+  IS_STORAGEBUCKET,
+  IS_MESSAGINGSENDERID,
+  IS_PROJECTID,
+  IS_APPID,
+  IS_MEASUREMENTID
+  } from '../config-test';
+
+
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyCgJqZdRhY5jgmwPhLDQwk1RzonDg-rZr8',
-    authDomain: 'liberty-fa7bc.firebaseapp.com',
-    databaseURL: 'https://liberty-fa7bc.firebaseio.com',
-    projectId: 'liberty-fa7bc',
-    storageBucket: 'liberty-fa7bc.appspot.com',
-    messagingSenderId: '128887383500',
-    appId: '1:128887383500:web:93395a7f14c303fb192969',
-    measurementId: 'G-KJ5BSZRVYT'
+    apiKey: IS_APIKEY,
+    authDomain: IS_AUTHDOMAIN,
+    databaseURL: IS_DATABASEURL,
+    projectId: IS_PROJECTID,
+    storageBucket: IS_STORAGEBUCKET,
+    messagingSenderId: IS_MESSAGINGSENDERID,
+    appId: IS_APPID,
+    measurementId: IS_MEASUREMENTID
   }
 };
+
 
 
 /*
