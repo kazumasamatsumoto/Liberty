@@ -1,5 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -7,33 +10,39 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
   styleUrls: ['./qr-scanner.page.scss'],
 })
 export class QrScannerPage implements OnInit {
+  qrData = 'https://aws.amazon.com/jp/';
+  scannedCode = null;
+  elementType: 'url' | 'canvas' | 'img' = 'canvas';
 
-  constructor(private qrScanner: QRScanner) { }
+  constructor(private barcodeScanner: BarcodeScanner, private base64ToGallery: Base64ToGallery,
+              private toastCtrl: ToastController) { }
 
   ngOnInit() {
-    this.qrScanner.prepare()
-    .then((status: QRScannerStatus) => {
-      if (status.authorized) {
-        // camera permission was granted
+  }
 
-
-        // start scanning
-        const scanSub = this.qrScanner.scan().subscribe((text: string) => {
-          console.log('Scanned something', text);
-
-          this.qrScanner.hide(); // hide camera preview
-          scanSub.unsubscribe(); // stop scanning
-        });
-
-      } else if (status.denied) {
-        // camera permission was permanently denied
-        // you must use QRScanner.openSettings() method to guide the user to the settings page
-        // then they can grant the permission from there
-      } else {
-        // permission was denied, but not permanently. You can ask for permission again at a later time.
+  scanCode() {
+    this.barcodeScanner.scan().then(
+      barcodeData => {
+        this.scannedCode = barcodeData;
       }
-    })
-    .catch((e: any) => console.log('Error is', e));
-    }
+    );
+  }
+
+  downloadQR() {
+    const canvas = document.querySelector('canvas') as HTMLCanvasElement;
+    const imageData = canvas.toDataURL('image/jpg').toString();
+    console.log('data: ', imageData);
+
+    const data = imageData.split(',')[1];
+
+    this.base64ToGallery.base64ToGallery(data,
+      {prefix: '_img', mediaScanner: true})
+      .then(async res => {
+        const toast = await this.toastCtrl.create({
+          header: 'QR Code saved in your Photolibrary'
+        });
+      }, err => console.log('err', err));
+  }
 
 }
+

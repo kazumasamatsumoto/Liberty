@@ -1,11 +1,9 @@
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { QrScannerPageRoutingModule } from './qr-scanner-routing.module';
-
 import { QrScannerPage } from './qr-scanner.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { QrScannerPage } from './qr-scanner.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    QrScannerPageRoutingModule
+    QrScannerPageRoutingModule,
+    NgxQRCodeModule
   ],
   declarations: [QrScannerPage]
 })
