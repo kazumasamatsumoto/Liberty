@@ -5,7 +5,32 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-text-center ion-padding-top">
-    <ion-button type="submit" shape="round" routerLink="/">ログイン</ion-button>
-  </div>
+  <ng-container *ngIf="!(showGuardian || showUser)" >
+    <ion-button expand="full" (click)="loginAnonymously()" color="secondary">
+      <ion-icon name="contact"></ion-icon>
+      Login
+    </ion-button>
+  </ng-container>
+  <ng-container *ngIf="showGuardian">
+    <ion-card *ngIf="qrData" class="ion-text-center">
+      <ngx-qrcode
+      [qrc-element-type]="elementType"
+      [qrc-value]="qrData"
+      qrc-class="my-code">
+      </ngx-qrcode>
+    </ion-card>
+  </ng-container>
+  <ng-container *ngIf="showUser">
+    <ion-button expand="full" (click)="scanCode()" color="secondary">
+      <ion-icon name="qr-scanner"></ion-icon>
+      Scan Code
+    </ion-button>
+  
+    <ion-card *ngIf="scannedCode">
+      <ion-card-content>
+        Result from Scan: {{ scannedCode }}
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+    
 </ion-content>
