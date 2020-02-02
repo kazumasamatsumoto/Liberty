@@ -19,20 +19,6 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'qr-create',
-    loadChildren: () => import('./qr-create/qr-create.module').then( m => m.QrCreatePageModule)
-  },
-  {
-    path: 'qr-scanner',
-    loadChildren: () => import('./qr-scanner/qr-scanner.module').then( m => m.QrScannerPageModule)
-  },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule),
-    // canActivate: [AngularFireAuthGuard],
-    // data: { authGuardPipe: redirectLoggedIn },
-  },
 ];
 
 @NgModule({
