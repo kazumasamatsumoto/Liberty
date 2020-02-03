@@ -25,6 +25,11 @@
       <ion-icon name="qr-scanner"></ion-icon>
       Scan Code
     </ion-button>
+
+    <ion-button expand="full" (click)="presentAlert()" color="secondary">
+      <ion-icon name="alert"></ion-icon>
+      Alert
+    </ion-button>
   
     <ion-card *ngIf="scannedCode">
       <ion-card-content>

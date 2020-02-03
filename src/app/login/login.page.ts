@@ -9,6 +9,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -29,7 +31,8 @@ export class LoginPage implements OnInit {
               private storage: Storage,
               private db: AngularFirestore,
               private router: Router,
-              private barcodeScanner: BarcodeScanner
+              private barcodeScanner: BarcodeScanner,
+              public alertController: AlertController
      ) { }
 
   // uidを取得する
@@ -130,5 +133,16 @@ export class LoginPage implements OnInit {
         this.scannedCode = barcodeData;
       }
     );
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: '注意',
+      subHeader: 'ユーザ連携について',
+      message: 'そのユーザはすでに連携しています',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

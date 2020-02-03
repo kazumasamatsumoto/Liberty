@@ -19,6 +19,18 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'top-user',
+    loadChildren: () => import('./top/top-user/top-user.module').then( m => m.TopUserPageModule)
+  },
+  {
+    path: 'top-guardian',
+    loadChildren: () => import('./top/top-guardian/top-guardian.module').then( m => m.TopGuardianPageModule)
+  },
+  {
+    path: 'terms-of-service',
+    loadChildren: () => import('./terms-of-service/terms-of-service.module').then( m => m.TermsOfServicePageModule)
+  },
 ];
 
 @NgModule({
