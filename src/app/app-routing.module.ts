@@ -13,23 +13,37 @@ const routes: Routes = [
       // canActivate: [AngularFireAuthGuard],
       // data: {authGuardPipe: redirectUnauthorized},
   },
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)},
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'top-user',
-    loadChildren: () => import('./pages/top/top-user/top-user.module').then( m => m.TopUserPageModule)
+    loadChildren: () => import('./pages/user/top-user/top-user.module').then( m => m.TopUserPageModule)
   },
   {
     path: 'top-guardian',
-    loadChildren: () => import('./pages/top/top-guardian/top-guardian.module').then( m => m.TopGuardianPageModule)
+    loadChildren: () => import('./pages/guardian/top-guardian/top-guardian.module').then( m => m.TopGuardianPageModule)
   },
   {
     path: 'terms-of-service',
     loadChildren: () => import('./pages/terms-of-service/terms-of-service.module').then( m => m.TermsOfServicePageModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/user/search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'talk',
+    loadChildren: () => import('./pages/user/talk/talk.module').then( m => m.TalkPageModule)
+  },
+  {
+    path: 'approval-list',
+    loadChildren: () => import('./pages/guardian/approval-list/approval-list.module').then( m => m.ApprovalListPageModule)
+  },
+  {
+    path: 'add-photo',
+    loadChildren: () => import('./pages/guardian/add-photo/add-photo.module').then( m => m.AddPhotoPageModule)
   },
 ];
 
