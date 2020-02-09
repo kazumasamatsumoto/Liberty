@@ -18,6 +18,8 @@ import { NavParamsService } from './../services/nav-params.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  isOpen = false;
+  scannedData: {};
   user: Observable<firebase.User>;
   showGuardian: boolean;
   showUser: boolean;
@@ -145,6 +147,7 @@ export class LoginPage implements OnInit {
     this.qrScanner.prepare()
       .then((status: QRScannerStatus) => {
       if (status.authorized) {
+        this.isOpen = true;
         const scanSub = this.qrScanner.scan().subscribe( async (text: string) => {
           console.log('Scanned something', text);
           try {
@@ -164,6 +167,7 @@ export class LoginPage implements OnInit {
             console.log('error');
           }
         });
+        this.qrScanner.show().then();
 
       } else if (status.denied) {
         console.log('error');
@@ -172,6 +176,16 @@ export class LoginPage implements OnInit {
       }
   })
   .catch((e: any) => console.log('Error is', e));
+  }
+
+  async closeScanner() {
+    try {
+      const status = await this.qrScanner.destroy();
+      console.log('destroy status', status);
+      this.isOpen = false;
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async presentAlert() {

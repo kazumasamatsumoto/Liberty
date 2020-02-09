@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>login</ion-title>
+    <ion-buttons slot="primary" *ngIf="isOpen">
+      <ion-button slot="icon-only" (click)="closeScanner()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [class.show-qr-scanner]="isOpen">
   <ng-container *ngIf="!(showGuardian || showUser)" >
     <ion-button expand="full" (click)="loginAnonymously()" color="secondary">
       <ion-icon name="contact"></ion-icon>
       Login
     </ion-button>
   </ng-container>
-  <ng-container *ngIf="showGuardian">
+  <ng-container *ngIf="showUser">
     <ion-card *ngIf="qrData" class="ion-text-center">
       <ngx-qrcode
       [qrc-element-type]="elementType"
@@ -20,7 +25,7 @@
       </ngx-qrcode>
     </ion-card>
   </ng-container>
-  <ng-container *ngIf="showUser">
+  <ng-container *ngIf="showGuardian">
     <ion-button expand="full" (click)="scanCode()" color="secondary">
       <ion-icon name="qr-scanner"></ion-icon>
       Scan Code
