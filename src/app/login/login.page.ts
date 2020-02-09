@@ -1,15 +1,16 @@
 import { IS_GURDIAN } from '../../config-test';
 import { Component, OnInit } from '@angular/core';
-// import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+// import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 import { AlertController } from '@ionic/angular';
+import { NavParamsService } from './../services/nav-params.service';
 
 @Component({
   selector: 'app-login',
@@ -31,8 +32,9 @@ export class LoginPage implements OnInit {
               private storage: Storage,
               private db: AngularFirestore,
               private router: Router,
-              private barcodeScanner: BarcodeScanner,
-              public alertController: AlertController
+              private qrScanner: QRScanner,
+              public alertController: AlertController,
+              public navParamsService: NavParamsService
      ) { }
 
   // uidを取得する
@@ -43,6 +45,17 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     // わかりやすく一つの関数にまとめたよ
     this.loginAnonymously();
+  }
+
+  // Firestoreの監視
+  async firestoreWatch() {
+    const uid = await this.storage.get('uid');
+    const userStatus = this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
+      console.log(data);
+      if (data.status === 1) {
+        this.authRouting(data);
+      }
+    });
   }
 
   // まとめた関数だよ（ログイン処理）
@@ -90,6 +103,7 @@ export class LoginPage implements OnInit {
 
   authRouting(userData) {
     if (userData.status === 0) {
+      this.firestoreWatch();
       if (userData.is_guardian) {
         this.showGuardian = true;
       } else {
@@ -97,10 +111,10 @@ export class LoginPage implements OnInit {
       }
     } else {
       if (userData.is_guardian) {
-        this.router.navigateByUrl('gardian-home');
+        this.router.navigateByUrl('/top-guardian');
       } else {
         // statusが連携ずみならtopへ
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/top-user');
       }
     }
   }
@@ -127,20 +141,51 @@ export class LoginPage implements OnInit {
   }
 
 
-  scanCode() {
-    this.barcodeScanner.scan().then(
-      barcodeData => {
-        this.scannedCode = barcodeData;
+  async scanCode() {
+    this.qrScanner.prepare()
+      .then((status: QRScannerStatus) => {
+      if (status.authorized) {
+        const scanSub = this.qrScanner.scan().subscribe( async (text: string) => {
+          console.log('Scanned something', text);
+          try {
+            const uidStatus =  await this.db.collection('users').doc(text).get().toPromise();
+            const userData = uidStatus.data();
+            if (userData.status === 0) {
+              // userのuidをサービスにセット
+              this.navParamsService.set({ text });
+              // 利用規約のページに遷移
+              this.router.navigateByUrl('/terms-of-service');
+              this.qrScanner.hide();
+              scanSub.unsubscribe();
+            } else {
+              this.presentAlert();
+            }
+          } catch (e) {
+            console.log('error');
+          }
+        });
+
+      } else if (status.denied) {
+        console.log('error');
+      } else {
+        console.log('error2');
       }
-    );
+  })
+  .catch((e: any) => console.log('Error is', e));
   }
 
   async presentAlert() {
     const alert = await this.alertController.create({
       header: '注意',
-      subHeader: 'ユーザ連携について',
-      message: 'そのユーザはすでに連携しています',
-      buttons: ['OK']
+      message: 'そのユーザーは連携済みです',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.router.navigateByUrl('/');
+          }
+        }
+      ]
     });
 
     await alert.present();

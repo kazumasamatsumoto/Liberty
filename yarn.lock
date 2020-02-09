@@ -332,10 +332,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@capacitor/ios@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-1.4.0.tgz#d38702375be67dc4be5b399f384b6e727973d741"
-  integrity sha512-vauJj/ye7d9cHPeLWHHS+sk+5V+Cgw8hhEzzYIxuwJ0t0HRIq9jnsJ+U9FF6Z2wphfX5jRFatfAxLxFLOmKGFg==
+"@capacitor/ios@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/ios/-/ios-1.5.0.tgz#519ae289d5164a218203e6492fd757bc7649aab9"
+  integrity sha512-YjKSQp51Kxjn+3bc2U/VBYQqfHMUbdDKTMiQwE0WXbsqckvKUqLiuz2OWaew0uirxFfZbUqDsvox4jGpY2OoPg==
 
 "@firebase/analytics-types@0.2.5":
   version "0.2.5"
@@ -602,10 +602,10 @@
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/qr-scanner@^5.20.0":
-  version "5.20.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/qr-scanner/-/qr-scanner-5.20.0.tgz#7718476c3863a8ba7972d5a9840f39f1ae8f20de"
-  integrity sha512-qu7wkR1lfMY3zdtKmzDavXSlxlzl1ii52kEeGTChmSbAw1Y5CLsiiGz4kZq06g5FoylcXnfrviHd8R9ssLCj+w==
+"@ionic-native/qr-scanner@^5.21.0":
+  version "5.21.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/qr-scanner/-/qr-scanner-5.21.0.tgz#1a4e971f840ee4655e92e62295bf405a1ad7c6b0"
+  integrity sha512-BGtKHF5PU2uzJV1Bm8mbgS0QwH5gV9TR4YGWfpwLdiu3oBxED4Dnc/vNlsvkbi7ZQtsn+dLR08emDa5AuOPPIA==
   dependencies:
     "@types/cordova" latest
 

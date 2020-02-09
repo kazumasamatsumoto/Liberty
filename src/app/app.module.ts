@@ -22,6 +22,8 @@ import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,6 +43,7 @@ import { IonicStorageModule } from '@ionic/storage';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
     Base64ToGallery,
+    QRScanner,
     // FirebaseAuthentication,
   ],
   bootstrap: [AppComponent]
