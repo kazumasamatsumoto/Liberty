@@ -9,27 +9,27 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./login/login.module').then(m => m.LoginPageModule),
+      import('./pages/login/login.module').then(m => m.LoginPageModule),
       // canActivate: [AngularFireAuthGuard],
       // data: {authGuardPipe: redirectUnauthorized},
   },
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)},
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'top-user',
-    loadChildren: () => import('./top/top-user/top-user.module').then( m => m.TopUserPageModule)
+    loadChildren: () => import('./pages/top/top-user/top-user.module').then( m => m.TopUserPageModule)
   },
   {
     path: 'top-guardian',
-    loadChildren: () => import('./top/top-guardian/top-guardian.module').then( m => m.TopGuardianPageModule)
+    loadChildren: () => import('./pages/top/top-guardian/top-guardian.module').then( m => m.TopGuardianPageModule)
   },
   {
     path: 'terms-of-service',
-    loadChildren: () => import('./terms-of-service/terms-of-service.module').then( m => m.TermsOfServicePageModule)
+    loadChildren: () => import('./pages/terms-of-service/terms-of-service.module').then( m => m.TermsOfServicePageModule)
   },
 ];
 
