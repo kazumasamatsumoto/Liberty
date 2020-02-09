@@ -1,4 +1,4 @@
-import { IS_GURDIAN } from '../../config-test';
+import { IS_GURDIAN } from '../../../config-test';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 import { AlertController } from '@ionic/angular';
-import { NavParamsService } from './../services/nav-params.service';
+import { NavParamsService } from '../../services/nav-params.service';
 
 @Component({
   selector: 'app-login',
