@@ -4,6 +4,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding class="background">
+  <ion-fab vertical="center" horizontal="center" slot="fixed">
+    <ion-fab-button color="danger"> 
+    <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+    <ion-fab-button>
+      <ion-img [src]="item"></ion-img>
+    </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+    <ion-fab-button><ion-icon name="logo-whatsapp"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+    <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+    </ion-fab-list> 
+    </ion-fab>
 </ion-content>
