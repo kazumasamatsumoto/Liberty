@@ -1,9 +1,10 @@
 ion-content.background{
-    --background: url(../../../images/couple.jpg) 0 0/100% 100% no-repeat;
+    --background: #D8EDFC;
     position: relative;
 }
 
-.buttons {
-    top: 200px;
+.search {
+    background-color: transparentize($color: #000000, $amount: 1);
+    margin-top: 10px;
 }
 

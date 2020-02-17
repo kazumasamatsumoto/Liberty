@@ -1,5 +1,5 @@
 ion-content.background{
-    --background: url(/assets/images/couple.jpg) 0 0/100% 100% no-repeat;
+    --background: #D8EDFC;
     position: relative;
 }
 
@@ -15,6 +15,10 @@ ion-content.background{
         padding-top: 48px;
         display: flex;
         justify-content: space-between;
+    }
+    .plus {
+        padding-top: 48px;
+        text-align: right;
     }
 }
 

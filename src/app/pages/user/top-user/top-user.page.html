@@ -1,24 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>top-user</ion-title>
+    <ion-title>リバティ</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-user" routerDirection="root">
+        <img src="assets/images/users_image/home.png"/>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="background">
-  <ion-fab vertical="center" horizontal="center" slot="fixed">
-    <ion-fab-button color="danger"> 
-    <ion-icon name="share"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="top">
-    <ion-fab-button>
-      <ion-img [src]="item"></ion-img>
-    </ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="start">
-    <ion-fab-button><ion-icon name="logo-whatsapp"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="end">
-    <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-    </ion-fab-list> 
-    </ion-fab>
+  <div class="button-wrapper">
+    <div>
+      <button fill="clear" class="search" routerLink="/search" routerDirection="forward">
+        <img src="assets/images/users_image/search1.png"/>
+      </button>
+    </div>
+    <div class="flex-wrapper">
+      <div>
+        <button fill="clear" class="search" routerLink="/talk" routerDirection="forward">
+          <img src="assets/images/users_image/chat1.png"/>
+        </button>
+      </div>
+      <div>
+        <button fill="clear" class="search" routerLink="/profile" routerDirection="forward">
+          <img src="assets/images/users_image/pallete1.png"/>
+        </button>
+      </div>
+    </div>
+  </div>
 </ion-content>

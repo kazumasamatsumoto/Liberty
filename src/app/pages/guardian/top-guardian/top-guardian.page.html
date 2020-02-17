@@ -1,43 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>top-guardian</ion-title>
+    <ion-title>保護者用管理画面</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-guardian" routerDirection="root">
+        <img src="assets/images/guardian_image/home.png"/>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="background">
-  <div class="buttons">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-      </ion-card>
+  <div class="button-wrapper">
+    <div>
+      <button fill="clear" class="search" routerLink="/approval-list" routerDirection="forward">
+        <img src="assets/images/guardian_image/apploval.png"/>
+      </button>
+    </div>
+    <div class="flex-wrapper">
+      <div>
+        <button fill="clear" class="search" routerLink="/talk-room" routerDirection="forward">
+          <img src="assets/images/guardian_image/talk.png"/>
+        </button>
+      </div>
+      <div>
+        <button fill="clear" class="search" routerLink="/user-choice" routerDirection="forward">
+          <img src="assets/images/guardian_image/profile.png"/>
+        </button>
+      </div>
+    </div>
   </div>
 </ion-content>

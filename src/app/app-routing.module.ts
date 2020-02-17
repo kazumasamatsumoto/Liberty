@@ -43,7 +43,28 @@ const routes: Routes = [
   },
   {
     path: 'add-photo',
-    loadChildren: () => import('./pages/guardian/add-photo/add-photo.module').then( m => m.AddPhotoPageModule)
+    loadChildren: () => import('./pages/guardian/add-photos/add-photo/add-photo.module').then( m => m.AddPhotoPageModule)
+  },
+  {
+    path: 'talk-room',
+    loadChildren: () => import('./pages/guardian/talk-room/talk-room.module').then( m => m.TalkRoomPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/user/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'user-choice',
+    loadChildren: () => import('./pages/guardian/user-choice/user-choice.module').then( m => m.UserChoicePageModule)
+  },
+  {
+    path: 'photo-selection',
+    loadChildren: () => import('./pages/guardian/add-photos/photo-selection/photo-selection.module').then( m => m.PhotoSelectionPageModule)
+  },
+  {
+    path: 'verification-photo',
+    // tslint:disable-next-line:max-line-length
+    loadChildren: () => import('./pages/guardian/add-photos/verification-photo/verification-photo.module').then( m => m.VerificationPhotoPageModule)
   },
 ];
 

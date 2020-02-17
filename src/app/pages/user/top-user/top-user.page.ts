@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-user.page.scss'],
 })
 export class TopUserPage implements OnInit {
-  item = '/src/app/images/users_image/chat_1.png';
+  item = 'assets/images/users_image/chat_1.png';
 
   constructor() { }
 

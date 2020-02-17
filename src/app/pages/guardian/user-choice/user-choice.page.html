@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>マッチの承認</ion-title>
+    <ion-title>userChoice</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-guardian" routerDirection="back">
         <img src="assets/images/guardian_image/home.png"/>
@@ -10,5 +10,10 @@
 </ion-header>
 
 <ion-content padding class="background">
+  <ion-item *ngFor="let adminUser of adminUsers" (click)="adminSet(adminUser)">
+    <div *ngIf="adminUser.top_image">
+    <img src={{adminUser.top_image.path}}/>{{adminUser.id}}
+    </div>
+  </ion-item>
 
 </ion-content>
