@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 // import { FirebaseAuthentication } from '@ionic-native/firebase-authentication/ngx';
 
 
@@ -24,6 +25,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { QRScanner } from '@ionic-native/qr-scanner/ngx';
 
+import { NetworkService } from './services/network.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +37,7 @@ import { QRScanner } from '@ionic-native/qr-scanner/ngx';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   providers: [
     StatusBar,
@@ -44,6 +47,7 @@ import { QRScanner } from '@ionic-native/qr-scanner/ngx';
     BarcodeScanner,
     Base64ToGallery,
     QRScanner,
+    NetworkService
     // FirebaseAuthentication,
   ],
   bootstrap: [AppComponent]

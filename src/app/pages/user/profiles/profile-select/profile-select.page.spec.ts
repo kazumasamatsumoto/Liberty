@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { VerificationPhotoPage } from './verification-photo.page';
+import { ProfileSelectPage } from './profile-select.page';
 
-describe('VerificationPhotoPage', () => {
-  let component: VerificationPhotoPage;
-  let fixture: ComponentFixture<VerificationPhotoPage>;
+describe('ProfileSelectPage', () => {
+  let component: ProfileSelectPage;
+  let fixture: ComponentFixture<ProfileSelectPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VerificationPhotoPage ],
+      declarations: [ ProfileSelectPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(VerificationPhotoPage);
+    fixture = TestBed.createComponent(ProfileSelectPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminUserServiceService } from 'src/app/services/admin-user-service.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-top-user',
@@ -7,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopUserPage implements OnInit {
   item = 'assets/images/users_image/chat_1.png';
+  adminUser;
 
-  constructor() { }
+  constructor(
+    public adminUserService: AdminUserServiceService,
+    private storage: Storage
+  ) { }
 
   ngOnInit() {
+    this.setUser();
+  }
+
+  async setUser() {
+    const userId = await this.storage.get('uid');
+    this.adminUserService.getUser(userId);
+    console.log(userId);
   }
 
 }

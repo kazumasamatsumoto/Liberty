@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/user/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./pages/user/profiles/profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'user-choice',
@@ -62,9 +62,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/guardian/add-photos/photo-selection/photo-selection.module').then( m => m.PhotoSelectionPageModule)
   },
   {
-    path: 'verification-photo',
-    // tslint:disable-next-line:max-line-length
-    loadChildren: () => import('./pages/guardian/add-photos/verification-photo/verification-photo.module').then( m => m.VerificationPhotoPageModule)
+    path: 'profile-select',
+    loadChildren: () => import('./pages/user/profiles/profile-select/profile-select.module').then( m => m.ProfileSelectPageModule)
   },
 ];
 
