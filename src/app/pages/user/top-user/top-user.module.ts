@@ -8,12 +8,15 @@ import { TopUserPageRoutingModule } from './top-user-routing.module';
 
 import { TopUserPage } from './top-user.page';
 
+import { DebugMenuComponentModule } from './../../../components/debug-menu/debug-menu.component.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TopUserPageRoutingModule
+    TopUserPageRoutingModule,
+    DebugMenuComponentModule
   ],
   declarations: [TopUserPage]
 })

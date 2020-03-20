@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>approval</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-user" routerDirection="back">
+        <img src="assets/images/users_image/home.png"/>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <div class="flex-wrapper">
+    <!-- <div>
+      <button fill="clear" class="search">
+        <img [src]="user.top_image.path"/>
+      </button>
+    </div> -->
+    <!-- 自分のプロフィール画像 -->
+    <div>
+        <img [src]="adminUser.top_image.path" class="adminUser"/>
+    </div>
+    <!-- 　相手のプロフィール画像 -->
+    <div>
+        <img [src]="user.top_image.path" class="user"/>
+    </div>
+  </div>
+  <div class="time-wrapper">
+    <button fill="clear" class="search">
+      <img src="assets/images/users_image/passage_of_time1.png"/>
+    </button>
+  </div>
+</ion-content>

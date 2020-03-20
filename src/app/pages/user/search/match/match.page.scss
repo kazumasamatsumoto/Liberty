@@ -1,0 +1,18 @@
+ion-content.background{
+    --background: #FCECF4;
+    position: relative;
+}
+
+.search {
+    background-color: transparentize($color: #000000, $amount: 1);
+    
+}
+
+.button-wrapper {
+    padding-top: 32px; // 4の倍数がお勧め
+    text-align: center;
+    .flex-wrapper {
+        padding-top: 48px;
+        text-align: center;
+    }
+}

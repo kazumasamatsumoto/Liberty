@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>login</ion-title>
+    <app-debug-menu></app-debug-menu>
     <ion-buttons slot="primary" *ngIf="isOpen">
       <ion-button slot="icon-only" (click)="closeScanner()">
         <ion-icon name="close"></ion-icon>
@@ -29,6 +30,10 @@
     <ion-button expand="full" (click)="scanCode()" color="secondary">
       <ion-icon name="qr-scanner"></ion-icon>
       Scan Code
+    </ion-button>
+    <ion-button expand="full" (click)="manualScan()" color="secondary">
+      <ion-icon name="qr-scanner"></ion-icon>
+      Manual Scan
     </ion-button>
   </ng-container>
 </ion-content>

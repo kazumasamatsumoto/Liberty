@@ -24,6 +24,7 @@ export class TopUserPage implements OnInit {
     const userId = await this.storage.get('uid');
     this.adminUserService.getUser(userId);
     console.log(userId);
+    // この時点でuserIdすでにセットされているので他のページで呼ぶときはthis.adminUserService.currentUserでOK
   }
 
 }

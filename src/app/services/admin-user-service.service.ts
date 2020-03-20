@@ -37,7 +37,8 @@ export class AdminUserServiceService {
   async getUser(userId) {
     const doc = await this.db.collection('users').doc<User>(userId).valueChanges().pipe(take(1)).toPromise();
     this.currentUser = doc;
-    this.currentUser.id = userId;
+    this.currentUser.id = userId; // 整理してまとめる
+
   }
 
 }

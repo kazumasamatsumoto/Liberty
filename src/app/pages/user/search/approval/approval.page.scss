@@ -1,0 +1,30 @@
+ion-content.background{
+    --background: #FCECF4;
+    position: relative;
+}
+
+.search {
+    background-color: transparentize($color: #000000, $amount: 1);
+    
+}
+
+.adminUser {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.user {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.flex-wrapper {
+    padding-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.time-wrapper {
+    padding-top: 160px; // 4の倍数がお勧め
+    text-align: center;
+}

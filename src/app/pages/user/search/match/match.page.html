@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>match</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-user" routerDirection="back">
+        <img src="assets/images/users_image/home.png"/>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <div class="button-wrapper">
+    <div>
+      <button fill="clear" class="search">
+        <img [src]="user.top_image.path"/>
+      </button>
+    </div>
+    <div class="flex-wrapper">
+      <div>
+        <button fill="clear" class="search" (click)="goToApprovalPage()" routerDirection="forward">
+          <img src="assets/images/users_image/respect1.png">
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

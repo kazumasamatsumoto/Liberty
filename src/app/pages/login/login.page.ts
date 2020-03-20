@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
     const uid = await this.storage.get('uid');
     const userStatus = this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
       console.log(data);
-      if (data.status === 1) {
+      if ( data && data.status === 1 ) {
         this.authRouting(data);
       }
     });
@@ -189,6 +189,45 @@ export class LoginPage implements OnInit {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  async manualScan() {
+    const alert = await this.alertController.create({
+      header: 'アカウント切り替え',
+      inputs: [
+        {
+          name: 'name1',
+          type: 'text',
+          placeholder: 'Placeholder 1'
+        }
+      ],
+      buttons: [
+        {
+          text: 'OK',
+          handler: async (data) => {
+            const text = data.name1;
+            console.log('Scanned something', text);
+            try {
+            const uidStatus =  await this.db.collection('users').doc(text).get().toPromise();
+            const userData = uidStatus.data();
+            console.log(uidStatus);
+            console.log(userData);
+            if (userData.status === 0) {
+              // userのuidをサービスにセット
+              this.navParamsService.set({ text });
+              // 利用規約のページに遷移
+              this.router.navigateByUrl('/terms-of-service');
+            } else {
+              this.presentAlert();
+            }
+            } catch (e) {
+              console.log('error');
+            }
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
   async presentAlert() {

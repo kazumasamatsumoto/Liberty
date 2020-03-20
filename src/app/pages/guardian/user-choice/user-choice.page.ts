@@ -27,7 +27,7 @@ export class UserChoicePage implements OnInit {
   }
 // ユーザ一覧取得
   async userList() {
-    const uid = 'CyjOXo3C5TNFDYqUR6qtHdY09hF2';
+    const uid = await this.storage.get('uid');
     console.log(uid);
     const userList = this.db.collection(`users/${uid}/admin`).get()
     .subscribe(snapshot => {
