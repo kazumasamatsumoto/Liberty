@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ApprovalListPage
+  },
+  {
+    path: 'approval',
+    loadChildren: () => import('./approval/approval.module').then( m => m.ApprovalPageModule)
   }
 ];
 

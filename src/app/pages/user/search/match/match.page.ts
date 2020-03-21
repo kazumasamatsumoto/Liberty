@@ -44,42 +44,27 @@ export class MatchPage implements OnInit {
     // DocumentReferenceの型を使う理由(必ずユニークIDになるので)検索とかでユニークIDを使うときはDocumentReferenceを使った方がいい
     const userRef = firebase.firestore().collection('users').doc(this.user.id);
     const adminUserRef = firebase.firestore().collection('users').doc(this.adminUser.id);
-
-    const now = new Date();
     const status = 0;
-    const userIds = [
+    const userRefs = [
       userRef, // 相手のuser.id (usersのドキュメントid)
       adminUserRef // 自分のadminUser.id (usersのドキュメントid)
     ];
-    const adminUserIds = [
+    const adminUserRefs = [
       this.user.guardianRef, // 相手のガーディアンのid (users.guadianRefという書き方でフィールドのguadianRefが取得できる)
       this.adminUser.guardianRef // 自分のガーディアンのid
     ];
+    const userImages = [
+      this.user.top_image.path,
+      this.adminUser.top_image.path,
+    ];
     console.log('tag');
-    this.chatRoomService.addChatRooms(status, userIds, adminUserIds).then((value) => {
+    this.chatRoomService.addChatRooms(status, userRefs, adminUserRefs, userImages).then((value) => {
       const uid = value.id;
       // レファレンスは4つ必要
-      // チャットルームの作成には4人の承認が必要
-      this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`).doc(this.user.id)
-        .set({
-          user: {ref: userRef},
-          status: 1
-      });
-      this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`).doc(this.adminUser.id)
-        .set({
-          user: {ref: adminUserRef},
-          status: 1
-      });
-      this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`).doc(this.user.guardianRef.id)
-        .set({
-          user: {ref: this.user.guardianRef},
-          status: 0
-      });
-      this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`).doc(this.adminUser.guardianRef.id)
-        .set({
-          user: {ref: this.adminUser.guardianRef},
-          status: 0
-      });
+      this.chatRoomService.addUserChatRooms(uid, this.user.id, userRef, 1);
+      this.chatRoomService.addUserChatRooms(uid, this.adminUser.id, adminUserRef, 1);
+      this.chatRoomService.addUserChatRooms(uid, this.user.guardianRef.id, this.user.guardianRef, 0);
+      this.chatRoomService.addUserChatRooms(uid, this.adminUser.guardianRef.id, this.adminUser.guardianRef, 0);
     });
 
   }

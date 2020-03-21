@@ -2,3 +2,17 @@ ion-content.background{
     --background: #D8EDFC;
     position: relative;
 }
+
+.image {
+    width: 100px;
+    text-align: center;
+}
+.button {
+    padding: 10%;
+    display: flex;
+    background-color: transparentize($color: #000000, $amount: 1);
+    margin-top: 10px;
+    justify-content: space-between;
+    background-color: #87CEFA;
+    border-radius: 16px;
+}
