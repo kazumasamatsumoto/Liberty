@@ -1,3 +1,4 @@
+import { ChatRoomsService } from './../../../services/chat-rooms.service';
 import { NavParamsService } from './../../../services/nav-params.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,6 +14,7 @@ import { AdminUserServiceService } from 'src/app/services/admin-user-service.ser
 })
 export class SearchPage implements OnInit {
   users: any = [];
+  userRef;
 
   constructor(
     private db: AngularFirestore,
@@ -20,6 +22,7 @@ export class SearchPage implements OnInit {
     public router: Router,
     public adminUserService: AdminUserServiceService,
     public navParamsService: NavParamsService,
+    public chatRoomsService: ChatRoomsService
   ) { }
 
   ngOnInit() {
@@ -30,6 +33,8 @@ export class SearchPage implements OnInit {
   async userList() {
     const uid = await this.storage.get('uid');
     console.log(uid);
+
+    // userListを取得する条件はis_guardianがfalseのみ
     const userList = this.db.collection('users', ref => ref.where('is_guardian', '==', false)).get()
       .subscribe(snapshot => {
       if (snapshot.empty) {
@@ -40,6 +45,9 @@ export class SearchPage implements OnInit {
         console.log(doc.id);
         const userData = doc.data();
         userData.id = doc.id;
+        /**
+         * すでにマッチしているIDを取得
+         */
         if (userData.id !== uid) {
           this.users.push(userData);
         }

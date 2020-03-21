@@ -46,4 +46,50 @@ export class ChatRoomsService {
         return action;
       })));
   }
+
+  /**
+   * ユーザ側でマッチ中のリスト一覧取得
+   */
+  public getApprovalListForUser(userRef) {
+    return this.db.collection('chat_rooms', ref => ref
+    .where('userRefs', 'array-contains', userRef)
+    .where('status', '==', 1)
+    )
+    .valueChanges({idField: 'id'})
+    .pipe(map(actions => actions.map(action => {
+      return action;
+    })));
+  }
+
+  /**
+   * ガーディアンのステータスの変更
+   */
+  public guardianStatusChange(uid: string, guardianUserId: string) {
+    this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`).doc(guardianUserId)
+      .update({
+        status: 1
+      });
+  }
+
+  /**
+   * チャットルームのステータスチェック
+   */
+  public statusCheck(uid: string) {
+    let flag = true;
+    this.db.collection(`chat_rooms/${uid}/user_chat_rooms/`)
+    .valueChanges()
+    .pipe(map(actions => actions.map((action: any) => {
+      if (action.status === 0) {
+        flag = false;
+      }
+    })))
+    .subscribe(() => {
+      if (flag) {
+        this.db.collection('chat_rooms').doc(uid)
+        .update({
+          status: 1
+        });
+      }
+    });
+  }
 }

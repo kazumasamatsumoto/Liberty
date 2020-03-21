@@ -1,3 +1,4 @@
+import { NavParamsService } from './../../../services/nav-params.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
@@ -21,7 +22,8 @@ export class ApprovalListPage implements OnInit {
   constructor(
     private router: Router,
     public guardianService: GuardianService,
-    public chatRoomsService: ChatRoomsService
+    public chatRoomsService: ChatRoomsService,
+    public navParamsService: NavParamsService
     ) { }
 
   ngOnInit() {
@@ -33,7 +35,8 @@ export class ApprovalListPage implements OnInit {
     // const userRef = firebase.firestore().collection('users').doc()
   }
 
-  approvalUser() {
+  approvalUser(approval) {
+    this.navParamsService.set(approval);
     this.router.navigateByUrl('/approval-list/approval');
   }
 
