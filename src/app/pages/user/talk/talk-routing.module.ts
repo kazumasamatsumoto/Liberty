@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TalkPage
+  },
+  {
+    path: 'chat-room',
+    loadChildren: () => import('./chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
   }
 ];
 

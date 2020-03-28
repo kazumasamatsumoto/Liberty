@@ -1,7 +1,8 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { take } from 'rxjs/operators';
-
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 interface User {
     id: string;
     status: number; // 0: 未連携（ユーザーと保護者の紐付けが完了していない）
@@ -38,7 +39,11 @@ export class AdminUserServiceService {
     const doc = await this.db.collection('users').doc<User>(userId).valueChanges().pipe(take(1)).toPromise();
     this.currentUser = doc;
     this.currentUser.id = userId; // 整理してまとめる
+  }
 
+  getUserRef(userId) {
+    const userRef = firebase.firestore().collection('users').doc(userId);
+    return userRef;
   }
 
 }

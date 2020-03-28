@@ -10,5 +10,11 @@
 </ion-header>
 
 <ion-content padding class="background">
-
+  <div *ngFor="let chatRoom of chatRoomList | async" class="photo" (click)="chatRoomUser(chatRoom)">
+    <div class="button">
+      <div *ngFor="let image of chatRoom.userImages">
+        <img [src]="image" class="image">
+      </div>
+    </div>
+  </div>
 </ion-content>

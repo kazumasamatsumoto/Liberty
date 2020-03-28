@@ -57,8 +57,21 @@ export class ChatRoomsService {
     )
     .valueChanges({idField: 'id'})
     .pipe(map(actions => actions.map(action => {
+      console.log(action);
       return action;
     })));
+  }
+
+  /**
+   * トークルームの取得
+   * createdAtの日時順に並べる
+   */
+  public getTalks(chatRoomId: string) {
+    return this.db.collection(`chat_rooms/${chatRoomId}/talks`, ref =>
+      ref.orderBy('createdAt', 'desc').limit(50)) // .limit(50)で最新の情報を50件取得する
+      .valueChanges({idField: 'id'})
+      .pipe(map(actions => actions.reverse()));
+      // reverseで取得した情報を並び替えます
   }
 
   /**
