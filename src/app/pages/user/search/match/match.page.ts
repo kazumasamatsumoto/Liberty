@@ -57,8 +57,14 @@ export class MatchPage implements OnInit {
       this.user.top_image.path,
       this.adminUser.top_image.path,
     ];
+    const userIds = {
+      [userRef.id]: true,
+      [adminUserRef.id]: true,
+      [this.user.guardianRef.id]: true,
+      [this.adminUser.guardianRef.id]: true
+    };
     console.log('tag');
-    this.chatRoomService.addChatRooms(status, userRefs, adminUserRefs, userImages).then((value) => {
+    this.chatRoomService.addChatRooms(status, userIds, userRefs, adminUserRefs, userImages).then((value) => {
       const uid = value.id;
       // レファレンスは4つ必要
       this.chatRoomService.addUserChatRooms(uid, this.user.id, userRef, 1);

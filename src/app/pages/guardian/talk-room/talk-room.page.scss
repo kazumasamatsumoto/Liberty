@@ -1,4 +1,18 @@
 ion-content.background{
-    --background: #D8EDFC;
+    --background: #FCECF4;
     position: relative;
+}
+
+.image {
+    width: 100px;
+    text-align: center;
+}
+.button {
+    padding: 10%;
+    display: flex;
+    background-color: transparentize($color: #000000, $amount: 1);
+    margin-top: 10px;
+    justify-content: space-between;
+    background-color: #FFBBDD;
+    border-radius: 16px;
 }

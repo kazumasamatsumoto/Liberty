@@ -58,10 +58,22 @@ export class SearchPage implements OnInit {
     console.log(userList);
   }
 
-  goToMatchPage(user) {
+  async goToMatchPage(user) {
     // adminUserServiceの中に書き込む処理
-    this.navParamsService.set({ user });
-    this.router.navigateByUrl('/search/match');
+    // すでにステータスが1の場合チャットルームに遷移する
+    const adminUser = this.adminUserService.currentUser;
+    const userRef = this.adminUserService.getUserRef(adminUser.id); // 自分
+    const otherUserRef = this.adminUserService.getUserRef(user.id); // 相手
+    this.chatRoomsService.getChatRoom(userRef, otherUserRef).subscribe((data: any) => {
+      console.log(data);
+      if (data && data.length > 0) {
+        this.navParamsService.set(data[0]); // data[0] chat-roomのドキュメント
+        this.router.navigateByUrl('/talk/chat-room');
+      } else {
+        this.navParamsService.set({ user });
+        this.router.navigateByUrl('/search/match');
+      }
+    });
   }
 
 }

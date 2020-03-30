@@ -4,6 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<!-- <ion-content padding class="background">
+  <ion-button (click)="dismiss()">テスト</ion-button>
+</ion-content> -->
 
+<ion-content padding class="background">
+  <div class="flex-wrapper">
+    <div *ngFor="let stamp of stamps" class="user" (click)="addTalk(stamp)">
+      <ng-container *ngIf="stamp.src">
+        <img src={{stamp.src}} class="userimg"/>
+      </ng-container>
+    </div>
+  </div>
 </ion-content>

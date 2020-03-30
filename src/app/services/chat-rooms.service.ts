@@ -1,7 +1,18 @@
+import { StampService, Stamp } from './stamp.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 
+
+// インターフェースの型もexportできる
+export interface Talk {
+  user: {
+    ref: any; // URL
+    image: string;
+  };
+  stamp: Stamp; // スタンプの形に合わせる
+  createdAt: Date; // 作成日
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -14,10 +25,11 @@ export class ChatRoomsService {
   // チャットルーム関連の処理
 
   // chat_roomsのコレクションを作成する
-  public addChatRooms(status: number, userRefs: any[], adminUserRefs: string[], userImages: string[]) {
+  public addChatRooms(status: number, userIds: any, userRefs: any[], adminUserRefs: string[], userImages: string[]) {
     console.log(userRefs, adminUserRefs);
     return this.db.collection('chat_rooms').add({
       status, // 0: 未承認,  1: 承認済み。user_chat_roomsの全Statusが1になったときに、こちらも1にする
+      userIds,
       userRefs, // chatRoomに所属するUserIdがある。承認、非承認問わない。
       adminUserRefs, // chatRoomに所属するadminのUserIdがある。承認、非承認問わない。
       userImages, // お互いのユーザのトップ画像
@@ -74,6 +86,18 @@ export class ChatRoomsService {
       // reverseで取得した情報を並び替えます
   }
 
+  public addTalks(chatRoomId: string, userRef: any, imagePath: string, stamp: any) {
+    return this.db.collection(`chat_rooms/${chatRoomId}/talks`).add({
+      user: {
+        ref: userRef, // URL
+        // user.top_image.path->
+        image: imagePath,
+      },
+      stamp,
+      createdAt: new Date(),
+    });
+  }
+
   /**
    * ガーディアンのステータスの変更
    */
@@ -104,5 +128,21 @@ export class ChatRoomsService {
         });
       }
     });
+  }
+
+  // チャットルームがすでに存在するかどうかの確認
+  getChatRoom(userRef, userRefother) {
+    console.log(userRef);
+    console.log(userRefother);
+    return this.db.collection('chat_rooms', ref => ref
+    .where('userIds.' + userRef.id, '==', true)
+    .where('userIds.' + userRefother.id, '==', true)
+    .where('status', '==', 1)
+    )
+    .valueChanges({idField: 'id'})
+    .pipe(map(actions => actions.map(action => {
+      console.log(action);
+      return action;
+    })));
   }
 }
