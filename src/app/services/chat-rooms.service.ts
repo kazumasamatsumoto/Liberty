@@ -75,6 +75,21 @@ export class ChatRoomsService {
   }
 
   /**
+   * ユーザ側でマッチ中のリスト一覧取得
+   */
+  public getApprovalListForGuardian(userRef) {
+    return this.db.collection('chat_rooms', ref => ref
+    .where('adminUserRefs', 'array-contains', userRef)
+    .where('status', '==', 1)
+    )
+    .valueChanges({idField: 'id'})
+    .pipe(map(actions => actions.map(action => {
+      console.log(action);
+      return action;
+    })));
+  }
+
+  /**
    * トークルームの取得
    * createdAtの日時順に並べる
    */

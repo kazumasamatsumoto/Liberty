@@ -2,3 +2,14 @@ ion-content.background{
     --background: #D8EDFC;
     position: relative;
 }
+
+.photo {
+    width: 80%;
+    height: 300px;
+    object-fit: cover;
+    background-color: #D8EDFC;
+}
+
+.image {
+    width: 100px;
+}

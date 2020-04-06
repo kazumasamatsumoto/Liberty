@@ -90,6 +90,7 @@ export class LoginPage implements OnInit {
 
   // firestoreの情報を呼び出す
   async checkUserData(uid) {
+    console.log('checkuserdata');
     this.qrData = uid;
     const userData = await this.readUserData(uid);
     console.log('tag', userData);
@@ -139,6 +140,7 @@ export class LoginPage implements OnInit {
   }
 
   async readUserData(uid: string) {
+    console.log('readUserdata');
     // firestoreから情報を取得する
     const readUserDataRef = await this.db.collection('users').doc(uid).get().toPromise();
     console.log(readUserDataRef.data());

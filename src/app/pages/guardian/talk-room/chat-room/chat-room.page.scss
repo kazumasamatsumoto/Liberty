@@ -1,0 +1,27 @@
+ion-content.background{
+    --background: #D8EDFC;
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    align-items: baseline;
+    margin-top: 10px;
+}
+
+.own {
+    justify-content: flex-end;
+}
+
+.talk {
+    justify-content: center;
+    margin-left: 30px;
+}
+
+.talkown {
+    margin-right: 30px;
+}
+
+.is-hidden {
+    visibility: hidden;
+}

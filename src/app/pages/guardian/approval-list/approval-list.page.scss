@@ -3,11 +3,18 @@ ion-content.background{
     position: relative;
 }
 
+.photo {
+    display: flex;
+    justify-content: center;
+}
 .image {
     width: 100px;
+    height: 100px;
+    object-fit: cover;
     text-align: center;
 }
 .button {
+    width: 80%;
     padding: 10%;
     display: flex;
     background-color: transparentize($color: #000000, $amount: 1);

@@ -10,10 +10,10 @@
 </ion-header>
 
 <ion-content padding class="background">
-  <ion-item *ngFor="let adminUser of adminUsers" (click)="adminSet(adminUser)">
-    <div *ngIf="adminUser.top_image">
-    <img src={{adminUser.top_image.path}}/>{{adminUser.id}}
+  <div *ngFor="let adminUser of adminUsers" (click)="adminSet(adminUser)">
+    <div *ngIf="adminUser.top_image" class="photo">
+    <img src={{adminUser.top_image.path}} class="image"/>{{adminUser.id}}
     </div>
-  </ion-item>
+  </div>
 
 </ion-content>

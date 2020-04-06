@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>chat-room</ion-title>
+    <ion-title>チャットルームの監視</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-guardian" routerDirection="back">
+        <img src="assets/images/guardian_image/home.png"/>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding class="background">
+  <div *ngFor="let talk of talkList" class="photo" [class.is-hidden]="!isFirstLoad">
+    <div *ngIf="userRef.path != talk.user.ref.path" class="flex">
+      <ion-avatar>
+        <img [src]="talk.user.image">
+      </ion-avatar>
+      <img [src]="talk.stamp.src" class="talk">
+    </div>
+    <div *ngIf="userRef.path == talk.user.ref.path" class="flex own">
+      <img [src]="talk.stamp.src" class="talkown">
+      <ion-avatar>
+        <img [src]="talk.user.image">
+      </ion-avatar>
+    </div>
+  </div>
 
 </ion-content>

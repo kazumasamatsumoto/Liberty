@@ -34,7 +34,7 @@ export class MatchPage implements OnInit {
 
   goToApprovalPage() {
     console.log('test');
-    // this.router.navigateByUrl('/search/approval');
+    this.router.navigateByUrl('/search/approval');
     this.createChatRoom();
   }
 

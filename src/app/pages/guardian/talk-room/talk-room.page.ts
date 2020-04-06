@@ -1,3 +1,4 @@
+import { GuardianService } from './../../../services/guardian.service';
 import { AdminUserServiceService } from 'src/app/services/admin-user-service.service';
 import { ChatRoomsService } from './../../../services/chat-rooms.service';
 import { NavParamsService } from './../../../services/nav-params.service';
@@ -7,14 +8,15 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
+
 @Component({
   selector: 'app-talk-room',
   templateUrl: './talk-room.page.html',
   styleUrls: ['./talk-room.page.scss'],
 })
 export class TalkRoomPage implements OnInit {
-  adminUser;
-  userRef;
+  guadianUser; // ガーディアンユーザ自身
+  userRef; // ガーディアンユーザのuserRef
 
   public chatRoomList: Observable<any[]>;
 
@@ -22,20 +24,22 @@ export class TalkRoomPage implements OnInit {
     public router: Router,
     public adminUserService: AdminUserServiceService,
     public navParamsService: NavParamsService,
-    public chatRoomsService: ChatRoomsService
-    ) { }
+    public chatRoomsService: ChatRoomsService,
+    public guardianService: GuardianService
+  ) { }
 
   ngOnInit() {
-    // this.adminUser = this.adminUserService.currentUser;
-    // this.userRef = this.adminUserService.getUserRef(this.adminUser.id);
-    // console.log(this.adminUser);
-    // console.log(this.userRef);
-    // this.chatRoomList = this.chatRoomsService.getApprovalListForUser(this.userRef);
+    // 自分自身のユーザーIDを取得する
+    this.guadianUser = this.guardianService.currentUser;
+    this.userRef = this.guardianService.getUserRef(this.guadianUser.id);
+    console.log(this.guadianUser);
+    console.log(this.userRef);
+    this.chatRoomList = this.chatRoomsService.getApprovalListForGuardian(this.userRef);
   }
 
   chatRoomUser(chatRoom) {
     this.navParamsService.set(chatRoom);
     this.router.navigateByUrl('/talk-room/chat-room');
+    //
   }
-
 }
