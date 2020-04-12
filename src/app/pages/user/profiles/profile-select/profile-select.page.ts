@@ -21,7 +21,7 @@ export class ProfileSelectPage implements OnInit {
   private reader = new FileReader();
   adminUser;
 
-  public photolist: Observable<{createdAt: Date, name: string, url: string}[]>;
+  public photoList: Observable<{createdAt: Date, name: string, url: string}[]>;
 
   constructor(
     private network: NetworkService,
@@ -35,7 +35,7 @@ export class ProfileSelectPage implements OnInit {
   ngOnInit() {
     this.adminUser = this.adminUserService.currentUser;
     console.log(this.adminUser);
-    this.photolist = this.network.getPhotos(this.adminUser.id);
+    this.photoList = this.network.getPhotos(this.adminUser.id);
   }
 
   async presentActionSheet(photo) {

@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>写真の選択</ion-title>
     <ion-buttons slot="end">
@@ -16,8 +15,8 @@
 <ion-content padding class="background">
   <div class="button-wrapper">
     <div class="flex-wrapper">
-      <div *ngFor="let photo of photolist | async" class="photo" (click)="presentActionSheet(photo)">
-        <img [src]="photo.url" class="photoimg"/>
+      <div *ngFor="let photo of photolist | async" class="user" (click)="presentActionSheet(photo)">
+        <img [src]="photo.url" class="user-img"/>
       </div>
     </div>
     <div class="plus">

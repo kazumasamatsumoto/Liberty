@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>プロフィール</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-user" routerDirection="back">
         <img src="assets/images/users_image/home.png"/>
@@ -11,11 +11,9 @@
 
 <ion-content padding class="background">
   <div class="button-wrapper">
-    <div>
-      <button fill="clear" class="search">
-        <img [src]="adminUser.top_image.path"/>
-      </button>
-    </div>
+      <div class="user">
+        <img [src]="adminUser.top_image.path" class="user-img"/>
+      </div>
     <div class="flex-wrapper">
       <div>
         <button fill="clear" class="search" routerLink="/profile-select" routerDirection="forward">

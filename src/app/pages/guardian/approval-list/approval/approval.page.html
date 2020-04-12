@@ -11,12 +11,12 @@
 
 <ion-content padding class="background">
     <div class="button">
-      <div *ngFor="let image of approval.userImages">
-        <img [src]="image" class="image">
+      <div *ngFor="let image of approval.userImages" class="user">
+        <img [src]="image" class="user-img">
       </div>
     </div>
     <div class="button-wrapper">
-      <button class="ok" (click)="statusChange(approval)">
+      <button class="ok" (click)="statusChange()">
         <div class="text">OK!!</div>
       </button>
     </div>

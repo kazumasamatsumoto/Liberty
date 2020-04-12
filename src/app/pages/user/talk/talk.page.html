@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>talk</ion-title>
+    <ion-title>トークルームの選択</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-user" routerDirection="back">
         <img src="assets/images/users_image/home.png"/>
@@ -12,8 +12,8 @@
 <ion-content padding class="background">
   <div *ngFor="let chatRoom of chatRoomList | async" class="photo" (click)="chatRoomUser(chatRoom)">
     <div class="button">
-      <div *ngFor="let image of chatRoom.userImages">
-        <img [src]="image" class="image">
+      <div *ngFor="let image of chatRoom.userImages" class="user">
+        <img [src]="image" class="user-img">
       </div>
     </div>
   </div>

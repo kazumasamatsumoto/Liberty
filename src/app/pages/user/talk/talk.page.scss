@@ -10,9 +10,29 @@ ion-content.background{
 .button {
     padding: 10%;
     display: flex;
+    flex-wrap: wrap;
     background-color: transparentize($color: #000000, $amount: 1);
     margin-top: 10px;
     justify-content: space-between;
     background-color: #FFBBDD;
     border-radius: 16px;
+    .user {
+        object-fit: contain;
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+        border: 1px solid #ccc;
+        background-color: white;
+        border-radius: 50%;
+        margin: 8px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .user-img {
+            // padding: 16px;
+            height: 170px;
+        }
+    }
 }

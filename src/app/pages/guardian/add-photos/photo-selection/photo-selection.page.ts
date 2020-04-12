@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { NetworkService } from '../../../../services/network.service';
 import { AdminUserServiceService } from 'src/app/services/admin-user-service.service';
 import { ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 const RESULT = 'result';
 
@@ -25,7 +26,8 @@ export class PhotoSelectionPage implements OnInit {
     private network: NetworkService,
     public adminUserService: AdminUserServiceService,
     public actionSheetController: ActionSheetController,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -74,6 +76,7 @@ export class PhotoSelectionPage implements OnInit {
         text: 'トップ画に設定する',
         handler: () => {
           this.adminUserService.topImageChange(photo);
+          this.router.navigateByUrl('/add-photo');
           // adminuserのトップイメージを変更する
           // photoに変更する
         }

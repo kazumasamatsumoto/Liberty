@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>userChoice</ion-title>
+    <ion-title>ユーザーの選択</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-guardian" routerDirection="back">
         <img src="assets/images/guardian_image/home.png"/>
@@ -10,10 +10,11 @@
 </ion-header>
 
 <ion-content padding class="background">
-  <div *ngFor="let adminUser of adminUsers" (click)="adminSet(adminUser)">
-    <div *ngIf="adminUser.top_image" class="photo">
-    <img src={{adminUser.top_image.path}} class="image"/>{{adminUser.id}}
+  <div *ngFor="let adminUser of adminUsers" (click)="adminSet(adminUser)" class="flex-wrapper">
+    <div *ngIf="adminUser.top_image" class="user">
+    <img src={{adminUser.top_image.path}} class="user-img"/>
     </div>
+    <div class="user-id">名前:{{adminUser.id}}</div>
   </div>
 
 </ion-content>

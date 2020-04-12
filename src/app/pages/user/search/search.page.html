@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-title>あいてをさがそう！</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-user" routerDirection="back">
         <img src="assets/images/users_image/home.png"/>
@@ -13,7 +13,7 @@
   <div class="flex-wrapper">
     <ion-item *ngFor="let user of users" class="user" (click)="goToMatchPage(user)">
       <div *ngIf="user.top_image">
-        <img src={{user.top_image.path}} class="userimg"/>
+        <img src={{user.top_image.path}} class="user-img"/>
       </div>
     </ion-item>
   </div>

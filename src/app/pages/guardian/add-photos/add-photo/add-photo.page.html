@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>写真の追加</ion-title>
     <ion-buttons slot="end">
@@ -14,10 +13,10 @@
 
 
 <ion-content padding class="background">
-  <div class="button-wrapper">
-    <div>
-      <button fill="clear" class="search">
-        <img [src]="adminUser.top_image.path"/>
+  <div class="button">
+    <div class="button-wrapper">
+      <button fill="clear" class="user">
+        <img [src]="adminUser.top_image.path" class="user-img"/>
       </button>
     </div>
     <div class="flex-wrapper">

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile select</ion-title>
+    <ion-title>プロフィールを選ぶ</ion-title>
     <ion-buttons slot="end">
       <button class="search" routerLink="/top-user" routerDirection="back">
         <img src="assets/images/users_image/home.png"/>
@@ -12,8 +12,8 @@
 <ion-content class="background">
   <div class="button-wrapper">
     <div class="flex-wrapper">
-      <div *ngFor="let photo of photolist | async" class="photo" (click)="presentActionSheet(photo)">
-        <img [src]="photo.url" class="photoimg"/>
+      <div *ngFor="let photo of photoList | async" class="user" (click)="presentActionSheet(photo)">
+        <img [src]="photo.url" class="user-img"/>
       </div>
     </div>
   </div>
