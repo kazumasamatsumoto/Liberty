@@ -5,7 +5,12 @@ ion-content.background{
 
 .search {
     background-color: transparentize($color: #000000, $amount: 1);
-    
+}
+
+.user-img {
+    background-color: transparentize($color: #000000, $amount: 1);
+    width: 200px;
+    height: 200px;
 }
 
 .button-wrapper {

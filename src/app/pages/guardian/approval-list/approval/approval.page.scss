@@ -3,17 +3,24 @@ ion-content.background{
     position: relative;
 }
 
-.button {
-    padding: 10%;
+.match {
     display: flex;
+    justify-content: center;
+}
+
+.match-wrapper {
+    width: 90%;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
     background-color: transparentize($color: #000000, $amount: 1);
     margin-top: 10px;
     justify-content: space-between;
     border-radius: 16px;
     .user {
         object-fit: contain;
-        width: 130px;
-        height: 130px;
+        width: 100px;
+        height: 100px;
         background-color: #ccc;
         border: 1px solid #ccc;
         background-color: white;

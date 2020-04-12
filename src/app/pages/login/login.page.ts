@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
 
   email: string;
   password: string;
+  isLoading: boolean;
 
   constructor(private angularFireAuth: AngularFireAuth,
               private storage: Storage,
@@ -46,6 +47,7 @@ export class LoginPage implements OnInit {
   // 最初に呼ばれる関数
   ngOnInit() {
     // わかりやすく一つの関数にまとめたよ
+    this.isLoading = false;
     this.loginAnonymously();
   }
 
@@ -68,6 +70,7 @@ export class LoginPage implements OnInit {
     const uid = await this.storage.get('uid');
     console.log(uid);
     if (!uid) {
+      this.isLoading = true;
       this.user = this.angularFireAuth.authState;
       // firebase authにユーザが作られるのを監視する
       this.user.subscribe(u => {

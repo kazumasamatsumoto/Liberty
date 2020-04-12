@@ -10,11 +10,13 @@
 </ion-header>
 
 <ion-content padding class="background">
-    <div class="button">
+  <div class="match">
+    <div class="match-wrapper">
       <div *ngFor="let image of approval.userImages" class="user">
         <img [src]="image" class="user-img">
       </div>
     </div>
+  </div>
     <div class="button-wrapper">
       <button class="ok" (click)="statusChange()">
         <div class="text">OK!!</div>

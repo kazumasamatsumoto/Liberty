@@ -1,39 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ログイン</ion-title>
-    <app-debug-menu></app-debug-menu>
-    <ion-buttons slot="primary" *ngIf="isOpen">
-      <ion-button slot="icon-only" (click)="closeScanner()">
-        <ion-icon name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+      <ion-title>ログイン</ion-title>
+      <app-debug-menu></app-debug-menu>
+      <ion-buttons slot="primary" *ngIf="isOpen">
+        <ion-button slot="icon-only" (click)="closeScanner()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [class.show-qr-scanner]="isOpen">
-  <ng-container *ngIf="!(showGuardian || showUser)" >
-    <ion-button expand="full" (click)="loginAnonymously()" color="secondary">
-      <ion-icon name="contact"></ion-icon>
-      Login
-    </ion-button>
-  </ng-container>
-  <ng-container *ngIf="showUser">
-    <ion-card *ngIf="qrData" class="ion-text-center">
-      <ngx-qrcode
-      [qrc-element-type]="elementType"
-      [qrc-value]="qrData"
-      qrc-class="my-code">
-      </ngx-qrcode>
-    </ion-card>
-  </ng-container>
-  <ng-container *ngIf="showGuardian">
-    <ion-button expand="full" (click)="scanCode()" color="secondary">
-      <ion-icon name="qr-scanner"></ion-icon>
-      Scan Code
-    </ion-button>
-    <ion-button expand="full" (click)="manualScan()" color="secondary">
-      <ion-icon name="qr-scanner"></ion-icon>
-      Manual Scan
-    </ion-button>
+  <ng-container *ngIf="isLoading">
+    <ng-container *ngIf="!(showGuardian || showUser)" >
+      <ion-button expand="full" (click)="loginAnonymously()" color="secondary">
+        <ion-icon name="contact"></ion-icon>
+        Login
+      </ion-button>
+    </ng-container>
+    <ng-container *ngIf="showUser">
+      <ion-card *ngIf="qrData" class="ion-text-center">
+        <ngx-qrcode
+        [qrc-element-type]="elementType"
+        [qrc-value]="qrData"
+        qrc-class="my-code">
+        </ngx-qrcode>
+      </ion-card>
+    </ng-container>
+    <ng-container *ngIf="showGuardian">
+      <ion-button expand="full" (click)="scanCode()" color="secondary" class="qr-scanner">
+        <ion-icon name="qr-scanner"></ion-icon>
+        カメラでQRコードをスキャン
+      </ion-button>
+      <ion-button expand="full" (click)="manualScan()" color="secondary" class="manual-scan">
+        <ion-icon name="qr-scanner"></ion-icon>
+        手動でユーザーIDを入力
+      </ion-button>
+    </ng-container>
   </ng-container>
 </ion-content>

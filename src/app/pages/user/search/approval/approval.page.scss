@@ -8,23 +8,32 @@ ion-content.background{
     
 }
 
-.adminUser {
-    width: 150px;
-    border-radius: 50%;
-}
-
-.user {
-    width: 150px;
-    border-radius: 50%;
-}
-
 .flex-wrapper {
-    padding-top: 60px;
+    width: 90%;
+    padding: 5%;
     display: flex;
+    flex-wrap: wrap;
+    background-color: transparentize($color: #000000, $amount: 1);
+    margin-top: 10px;
     justify-content: space-between;
+    background-color: #FFBBDD;
+    border-radius: 16px;
+    margin: auto;
+    margin-top: 48px;
+    .adminUser {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    
+    .user {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
 }
 
 .time-wrapper {
-    padding-top: 160px; // 4の倍数がお勧め
+    padding-top: 80px; // 4の倍数がお勧め
     text-align: center;
 }
