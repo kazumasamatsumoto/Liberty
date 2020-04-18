@@ -11,10 +11,10 @@
 
 <ion-content padding class="background">
   <div class="flex-wrapper">
-    <ion-item *ngFor="let user of users" class="user" (click)="goToMatchPage(user)">
+    <div *ngFor="let user of users" class="user" (click)="goToMatchPage(user)">
       <div *ngIf="user.top_image">
         <img src={{user.top_image.path}} class="user-img"/>
       </div>
-    </ion-item>
+    </div>
   </div>
 </ion-content>

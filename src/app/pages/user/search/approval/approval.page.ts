@@ -20,7 +20,9 @@ export class ApprovalPage implements OnInit {
 
   ngOnInit() {
     this.adminUser = this.adminUserService.currentUser;
+    console.log('approval', this.adminUser);
     this.user = this.navParamsService.get().user;
+    console.log('user', this.user);
   }
 
 }

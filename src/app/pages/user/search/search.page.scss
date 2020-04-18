@@ -3,25 +3,76 @@ ion-content.background{
 }
 
 .flex-wrapper {
-    padding-top: 48px;
+    @media (min-width: 1440px) {
+        width: 20%;
+    }
+    @media (max-width: 1440px) {
+    width: 30%;
+    }
+    @media (max-width: 960px) {
+    width: 48%;
+    }
+    @media (max-width: 720px) {
+    width: 60%;
+    }
+    @media (max-width: 540px) {
+    width: 90%;
+    }
+    @media (max-width: 414px) {
+    width: 90%;
+    }
+    padding: 5%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
+    justify-content: space-between;
+    border-radius: 16px;
+    margin: auto;
+    margin-top: 48px;
     .user {
+        @media (min-width: 1440px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 1440px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 960px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 720px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 540px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 414px) {
+            width: 148px;
+            height: 148px;
+        }
+        @media (max-width: 410px) {
+            width: 112px;
+            height: 112px;
+        }
         object-fit: contain;
-        width: 45%;
-        height: 170px;
         background-color: #ccc;
         border: 1px solid #ccc;
         background-color: white;
         border-radius: 50%;
         margin: 8px;
         position: relative;
+        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
         .user-img {
             // padding: 16px;
-            height: 170px;
+            height: 148px;
+            width: 148px;
         }
     }
 }

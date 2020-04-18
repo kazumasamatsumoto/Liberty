@@ -7,8 +7,6 @@ ion-content.background{
     
 }
 
-
-
 .button-wrapper {
     padding-top: 32px; // 4の倍数がお勧め
     text-align: center;
@@ -29,6 +27,7 @@ ion-content.background{
         .user-img {
             // padding: 16px;
             height: 170px;
+            width: 170px;
         }
     }
     .flex-wrapper {

@@ -16,6 +16,9 @@ export class MatchPage implements OnInit {
 
   user; // マッチ相手
   adminUser; // 自分
+  userRef;
+  otherUserRef;
+  chatRoomTest;
   userIds = [];
   status: number;
 
@@ -28,14 +31,13 @@ export class MatchPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('matchPage');
     this.user = this.navParamsService.get().user;
     this.adminUser = this.adminUserService.currentUser;
   }
 
   goToApprovalPage() {
-    console.log('test');
     this.router.navigateByUrl('/search/approval');
-    this.createChatRoom();
   }
 
   // chat_roomsのドキュメントを作成

@@ -64,11 +64,17 @@ export class SearchPage implements OnInit {
     const adminUser = this.adminUserService.currentUser;
     const userRef = this.adminUserService.getUserRef(adminUser.id); // 自分
     const otherUserRef = this.adminUserService.getUserRef(user.id); // 相手
+    console.log(otherUserRef);
     this.chatRoomsService.getChatRoom(userRef, otherUserRef).subscribe((data: any) => {
-      console.log(data);
-      if (data && data.length > 0) {
+      console.log('data', data);
+      // トークルームにはいきます
+      if (data.length >= 1 && data[0].status === 1) {
         this.navParamsService.set(data[0]); // data[0] chat-roomのドキュメント
         this.router.navigateByUrl('/talk/chat-room');
+      } else if (data.length >= 1 && data[0].status === 0) {
+        // 一度マッチの申請を行っていればapproval.pageに遷移する
+        this.navParamsService.set({ user });
+        this.router.navigateByUrl('/search/approval');
       } else {
         this.navParamsService.set({ user });
         this.router.navigateByUrl('/search/match');

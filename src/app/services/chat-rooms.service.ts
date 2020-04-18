@@ -146,13 +146,12 @@ export class ChatRoomsService {
   }
 
   // チャットルームがすでに存在するかどうかの確認
-  getChatRoom(userRef, userRefother) {
+  getChatRoom(userRef, userRefOther) {
     console.log(userRef);
-    console.log(userRefother);
+    console.log(userRefOther);
     return this.db.collection('chat_rooms', ref => ref
     .where('userIds.' + userRef.id, '==', true)
-    .where('userIds.' + userRefother.id, '==', true)
-    .where('status', '==', 1)
+    .where('userIds.' + userRefOther.id, '==', true)
     )
     .valueChanges({idField: 'id'})
     .pipe(map(actions => actions.map(action => {

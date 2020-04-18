@@ -30,6 +30,9 @@ export class LoginPage implements OnInit {
   email: string;
   password: string;
   isLoading: boolean;
+  angufire = this.db.collection('users');
+
+
 
   constructor(private angularFireAuth: AngularFireAuth,
               private storage: Storage,
@@ -45,17 +48,16 @@ export class LoginPage implements OnInit {
   // なければログイン
   // uidをローカルストレージに保存
   // 最初に呼ばれる関数
-  ngOnInit() {
+  async ngOnInit() {
     // わかりやすく一つの関数にまとめたよ
     this.isLoading = false;
-    this.loginAnonymously();
+    await this.loginAnonymously();
   }
 
   // Firestoreの監視
   async firestoreWatch() {
     const uid = await this.storage.get('uid');
     const userStatus = this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
-      console.log(data);
       if ( data && data.status === 1 ) {
         this.authRouting(data);
       }
@@ -68,18 +70,17 @@ export class LoginPage implements OnInit {
 
     // ローカルストレージ
     const uid = await this.storage.get('uid');
-    console.log(uid);
     if (!uid) {
       this.isLoading = true;
       this.user = this.angularFireAuth.authState;
       // firebase authにユーザが作られるのを監視する
-      this.user.subscribe(u => {
+      this.user.subscribe(async u => {
         if (u) {
-          console.log(u.uid);
+          // console.log(u.uid);
           // u.uidをローカルストレージに保存
           this.storage.set('uid', u.uid);
           // Firestoreの情報を呼び出す
-          this.checkUserData(u.uid);
+          await this.checkUserData(u.uid);
         }
       });
       // 匿名ログイン
@@ -87,20 +88,18 @@ export class LoginPage implements OnInit {
       console.log(credential.additionalUserInfo);
     } else {
       // firestoreの情報を呼び出す
-      this.checkUserData(uid);
+      await this.checkUserData(uid);
     }
   }
 
   // firestoreの情報を呼び出す
   async checkUserData(uid) {
-    console.log('checkuserdata');
     this.qrData = uid;
+    console.log('test');
     const userData = await this.readUserData(uid);
     console.log('tag', userData);
     if (userData) {
-
       this.authRouting(userData);
-
     } else {
       const tmp = this.registUserData(uid);
       this.authRouting(tmp);
@@ -143,10 +142,9 @@ export class LoginPage implements OnInit {
   }
 
   async readUserData(uid: string) {
-    console.log('readUserdata');
+    console.log('read-user-data');
     // firestoreから情報を取得する
     const readUserDataRef = await this.db.collection('users').doc(uid).get().toPromise();
-    console.log(readUserDataRef.data());
     return readUserDataRef.data();
   }
 
