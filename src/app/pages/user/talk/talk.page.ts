@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { AdminUserServiceService } from 'src/app/services/admin-user-service.service';
 import { Router } from '@angular/router';
 import { NavParamsService } from './../../../services/nav-params.service';
@@ -55,7 +54,6 @@ export class TalkPage implements OnInit {
   chatRoomUser(chatRoom) {
     this.navParamsService.set(chatRoom);
     this.router.navigateByUrl('/talk/chat-room');
-    //
   }
 
 }

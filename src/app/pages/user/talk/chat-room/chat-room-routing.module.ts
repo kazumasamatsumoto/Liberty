@@ -8,10 +8,10 @@ const routes: Routes = [
     path: '',
     component: ChatRoomPage
   },
-  {
-    path: 'stamp-modal',
-    loadChildren: () => import('./stamp-modal/stamp-modal.module').then( m => m.StampModalPageModule)
-  },
+  // {
+  //   path: 'stamp-modal',
+  //   loadChildren: () => import('./stamp-modal/stamp-modal.module').then( m => m.StampModalPageModule)
+  // },
 ];
 
 @NgModule({

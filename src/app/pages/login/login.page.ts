@@ -26,11 +26,9 @@ export class LoginPage implements OnInit {
   qrData = '';
   scannedCode = null;
   elementType: 'url' | 'canvas' | 'img' = 'canvas';
-
   email: string;
   password: string;
   isLoading: boolean;
-  angufire = this.db.collection('users');
 
 
 
@@ -57,7 +55,7 @@ export class LoginPage implements OnInit {
   // Firestoreの監視
   async firestoreWatch() {
     const uid = await this.storage.get('uid');
-    const userStatus = this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
+    this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
       if ( data && data.status === 1 ) {
         this.authRouting(data);
       }
@@ -95,9 +93,7 @@ export class LoginPage implements OnInit {
   // firestoreの情報を呼び出す
   async checkUserData(uid) {
     this.qrData = uid;
-    console.log('test');
     const userData = await this.readUserData(uid);
-    console.log('tag', userData);
     if (userData) {
       this.authRouting(userData);
     } else {
