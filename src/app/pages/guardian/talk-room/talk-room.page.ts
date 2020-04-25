@@ -45,12 +45,10 @@ export class TalkRoomPage implements OnInit {
       this.chatRoomList = chatRooms;
     });
     console.log(this.chatRoomList);
-    // this.chatRoomList = this.chatRoomsService.getApprovalListForGuardian(this.userRef);
   }
 
   chatRoomUser(chatRoom) {
     this.navParamsService.set(chatRoom);
     this.router.navigateByUrl('/talk-room/chat-room');
-    //
   }
 }

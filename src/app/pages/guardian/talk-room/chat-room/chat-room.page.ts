@@ -16,6 +16,9 @@ export class ChatRoomPage implements OnInit {
   chatRoom;
   userRef;
   adminUser;
+  otherUser;
+  adminUserRef;
+  otherUserRef;
   isFirstLoad = false;
 
   public talkList: Observable<any[]>;
@@ -29,17 +32,32 @@ export class ChatRoomPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getTalk();
+  }
+
+  async getTalk() {
     this.chatRoom = this.navParamsService.get();
-    console.log('tag', '');
-    console.log(this.chatRoom);
+    this.userRef = this.chatRoom.userRefs[0];
+    this.adminUserRef = this.chatRoom.userRefs[0];
+    this.otherUserRef = this.chatRoom.userRefs[1];
+    const docAdmin = await this.adminUserRef.get();
+    const userAdmin = await docAdmin.data();
+    const docOther = await this.otherUserRef.get();
+    const userOther = await docOther.data();
+    this.adminUser = userAdmin;
+    this.otherUser = userOther;
+    console.log(this.adminUser.top_image.path);
+
+    // 順番的に後に持ってきた方が良い
     this.chatRoomsService.getTalks(this.chatRoom.id).subscribe((data: any) => {
       this.talkList = data; // talksのドキュメント全部（作成順に並んでいる）
     });
-    this.userRef = this.chatRoom.userRefs[0];
-    // this.adminUser = this.guardianService.currentUser;
-    // this.userRef = this.adminUserService.getUserRef(this.adminUser.id);
-    console.log(this.chatRoom.id);
-    console.log(this.talkList);
+  }
+
+  async getChatRoom() {
+    this.adminUser = this.adminUserService.currentUser;
+    this.userRef = this.adminUserService.getUserRef(this.adminUser.id);
+    this.chatRoom = this.navParamsService.get();
   }
 
   ionViewDidEnter() {
