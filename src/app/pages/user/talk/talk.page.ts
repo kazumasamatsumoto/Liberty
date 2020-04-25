@@ -16,7 +16,7 @@ export class TalkPage implements OnInit {
   adminUser;
   userRef;
 
-  public chatRoomList: Observable<any[]>;
+  public chatRoomList;
 
   constructor(
     public router: Router,
@@ -28,9 +28,28 @@ export class TalkPage implements OnInit {
   ngOnInit() {
     this.adminUser = this.adminUserService.currentUser;
     this.userRef = this.adminUserService.getUserRef(this.adminUser.id);
-    console.log(this.adminUser);
-    console.log(this.userRef);
-    this.chatRoomList = this.chatRoomsService.getApprovalListForUser(this.userRef);
+    this.chatRoomsService.getApprovalListForUser(this.userRef).subscribe(async (chatRooms: any) => {
+      for (const chatRoom of chatRooms) {
+        // userRefsを取得して
+        const userImages: any = [];
+        /**
+         * chatRoomの中のuserRefsを取得して
+         * for文で繰り返し処理を行い
+         * それぞれのrefからusersのドキュメントを取得
+         * user.top_image.pathでpathを取得
+         */
+        for (const ref of chatRoom.userRefs) {
+          const doc = await ref.get();
+          const user = await doc.data();
+          console.log(user);
+          userImages.push(user.top_image.path);
+        }
+        console.log(userImages);
+        chatRoom.userImages = userImages;
+      }
+      this.chatRoomList = chatRooms;
+    });
+    console.log(this.chatRoomList);
   }
 
   chatRoomUser(chatRoom) {

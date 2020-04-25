@@ -13,14 +13,14 @@
   <div *ngFor="let talk of talkList" class="photo" [class.is-hidden]="!isFirstLoad">
     <div *ngIf="userRef.path != talk.user.ref.path" class="flex">
       <ion-avatar>
-        <img [src]="talk.user.image">
+        <img [src]="otherUser.top_image.path">
       </ion-avatar>
       <img [src]="talk.stamp.src" class="talk">
     </div>
     <div *ngIf="userRef.path == talk.user.ref.path" class="flex own">
       <img [src]="talk.stamp.src" class="talkown">
       <ion-avatar>
-        <img [src]="talk.user.image">
+        <img [src]="adminUser.top_image.path">
       </ion-avatar>
     </div>
   </div>

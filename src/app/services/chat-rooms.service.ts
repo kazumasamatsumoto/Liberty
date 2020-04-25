@@ -68,9 +68,8 @@ export class ChatRoomsService {
     .where('status', '==', 1)
     )
     .valueChanges({idField: 'id'})
-    .pipe(map(actions => actions.map(action => {
-      console.log(action);
-      return action;
+    .pipe(map(chatRooms => chatRooms.map((chatRoom: any) => {
+      return chatRoom;
     })));
   }
 
