@@ -18,7 +18,7 @@ export class TalkRoomPage implements OnInit {
   guadianUser; // ガーディアンユーザ自身
   userRef; // ガーディアンユーザのuserRef
 
-  public chatRoomList: Observable<any[]>;
+  public chatRoomList;
 
   constructor(
     public router: Router,
@@ -32,9 +32,20 @@ export class TalkRoomPage implements OnInit {
     // 自分自身のユーザーIDを取得する
     this.guadianUser = this.guardianService.currentUser;
     this.userRef = this.guardianService.getUserRef(this.guadianUser.id);
-    console.log(this.guadianUser);
-    console.log(this.userRef);
-    this.chatRoomList = this.chatRoomsService.getApprovalListForGuardian(this.userRef);
+    this.chatRoomsService.getApprovalListForGuardian(this.userRef).subscribe(async (chatRooms: any) => {
+      for (const chatRoom of chatRooms) {
+        const userImages: any = [];
+        for (const ref of chatRoom.userRefs) {
+          const doc = await ref.get();
+          const user = await doc.data();
+          userImages.push(user.top_image.path);
+        }
+        chatRoom.userImages = userImages;
+      }
+      this.chatRoomList = chatRooms;
+    });
+    console.log(this.chatRoomList);
+    // this.chatRoomList = this.chatRoomsService.getApprovalListForGuardian(this.userRef);
   }
 
   chatRoomUser(chatRoom) {
