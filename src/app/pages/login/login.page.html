@@ -28,13 +28,13 @@
       </ion-card>
     </ng-container>
     <ng-container *ngIf="showGuardian">
-      <ion-button expand="full" (click)="scanCode()" color="secondary" class="qr-scanner">
-        <ion-icon name="qr-scanner"></ion-icon>
-        カメラでQRコードをスキャン
+      <ion-button (click)="scanCode()" color="button" style="height: 80px; width: 300px;">
+        <ion-icon name="qr-code-outline" class="icon"></ion-icon>
+        QRコードをスキャン
       </ion-button>
-      <ion-button expand="full" (click)="manualScan()" color="secondary" class="manual-scan">
-        <ion-icon name="qr-scanner"></ion-icon>
-        手動でユーザーIDを入力
+      <ion-button (click)="manualScan()" color="button" style="height: 80px; width: 300px;">
+        <ion-icon name="pencil-outline" class="icon"></ion-icon>
+        ユーザーIDを入力
       </ion-button>
     </ng-container>
   </ng-container>

@@ -65,6 +65,10 @@ const routes: Routes = [
     path: 'profile-select',
     loadChildren: () => import('./pages/user/profiles/profile-select/profile-select.module').then( m => m.ProfileSelectPageModule)
   },
+  {
+    path: 'add-user',
+    loadChildren: () => import('./pages/guardian/add-user/add-user.module').then( m => m.AddUserPageModule)
+  },
 ];
 
 @NgModule({

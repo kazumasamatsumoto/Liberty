@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>ユーザの選択・追加</ion-title>
+    <ion-buttons slot="end">
+      <button class="search" routerLink="/top-guardian" routerDirection="back">
+        <img src="assets/images/guardian_image/home.png"/>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="background">
+  <div class="button-wrapper">
+    <div class="flex-wrapper">
+      <ion-button (click)="scanCode()" color="button" style="height: 80px; width: 300px;">
+        <ion-icon name="qr-code-outline" class="icon"></ion-icon>
+        QRコードをスキャン
+      </ion-button>
+      <ion-button (click)="manualScan()" color="button" style="height: 80px; width: 300px;">
+        <ion-icon name="pencil-outline" class="icon"></ion-icon>
+        ユーザーIDを入力
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

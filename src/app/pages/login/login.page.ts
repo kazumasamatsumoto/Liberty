@@ -12,6 +12,11 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController } from '@ionic/angular';
 import { NavParamsService } from '../../services/nav-params.service';
 
+// リファクタリングの結果
+// ログイン処理のまとめ
+// 連携済のユーザに対するアラート
+// の2つは残すことにそのほかはサービスに機能を記載して呼び出す
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -74,7 +79,7 @@ export class LoginPage implements OnInit {
       // firebase authにユーザが作られるのを監視する
       this.user.subscribe(async u => {
         if (u) {
-          // console.log(u.uid);
+          console.log(u.uid);
           // u.uidをローカルストレージに保存
           this.storage.set('uid', u.uid);
           // Firestoreの情報を呼び出す
