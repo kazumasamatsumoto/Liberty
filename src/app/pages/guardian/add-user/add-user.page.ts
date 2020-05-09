@@ -29,17 +29,17 @@ export class AddUserPage implements OnInit {
   async　manualScan() {
     // ここで手動入力での実装を書く
     const alert = await this.alertController.create({
-      header: 'アカウント切り替え',
+      header: '追加するユーザIDを入力',
       inputs: [
         {
           name: 'name1',
           type: 'text',
-          placeholder: 'Placeholder 1'
+          placeholder: 'IDを入力'
         }
       ],
       buttons: [
         {
-          text: 'OK',
+          text: '追加',
           handler: async (data) => {
             const text = data.name1;
             console.log('Scanned something', text);
