@@ -20,10 +20,10 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@capacitor/android": "^2.1.0",
     "@capacitor/cli": "^1.4.0",
-    "@capacitor/core": "^1.4.0",
-    "@capacitor/ios": "^1.5.0",
-    "@ionic-native/barcode-scanner": "^5.20.0",
+    "@capacitor/core": "^2.1.0",
+    "@capacitor/ios": "^2.1.0",
     "@ionic-native/base64-to-gallery": "^5.20.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/qr-scanner": "^5.21.0",
@@ -36,7 +36,6 @@
     "core-js": "^2.5.4",
     "firebase": "^7.8.0",
     "ngx-qrcode2": "0.0.9",
-    "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -71,7 +70,6 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-qrscanner": {},
-      "phonegap-plugin-barcodescanner": {},
       "cordova-base64-to-gallery": {}
     }
   }

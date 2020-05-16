@@ -34,6 +34,7 @@ export class MatchPage implements OnInit {
     console.log('matchPage');
     this.user = this.navParamsService.get().user;
     this.adminUser = this.adminUserService.currentUser;
+    console.log('test', this.adminUser);
   }
 
   goToApprovalPage() {
@@ -66,6 +67,7 @@ export class MatchPage implements OnInit {
       [this.user.guardianRef.id]: true,
       [this.adminUser.guardianRef.id]: true
     };
+    console.log(userIds);
     console.log('tag');
     this.chatRoomService.addChatRooms(status, userIds, userRefs, adminUserRefs, userImages).then((value) => {
       const uid = value.id;

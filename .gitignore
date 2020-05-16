@@ -31,4 +31,5 @@ npm-debug.log*
 /plugins
 /www
 
-/src/config-test.ts
+/src/config.guardian.ts
+/src/config.user.ts

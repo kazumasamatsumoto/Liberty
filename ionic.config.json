@@ -1,7 +1,8 @@
 {
   "name": "Liberty",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

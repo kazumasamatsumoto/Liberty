@@ -64,7 +64,7 @@ export class ChatRoomPage implements OnInit {
       this.content.scrollToBottom(0).then(() => {
         this.isFirstLoad = true;
       });
-    }, 100);
+    }, 1000);
   }
 
   // 追加

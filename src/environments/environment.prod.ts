@@ -7,7 +7,7 @@ import {
   IS_PROJECTID,
   IS_APPID,
   IS_MEASUREMENTID
-  } from '../config-test';
+  } from '../config';
 
 
 export const environment = {

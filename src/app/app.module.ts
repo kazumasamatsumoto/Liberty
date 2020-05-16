@@ -16,7 +16,6 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -42,7 +41,6 @@ import { NetworkService } from './services/network.service';
     SplashScreen,
     AngularFireAuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    BarcodeScanner,
     Base64ToGallery,
     QRScanner,
     NetworkService

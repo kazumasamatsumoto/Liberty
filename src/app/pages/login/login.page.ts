@@ -1,4 +1,4 @@
-import { IS_GURDIAN } from '../../../config-test';
+import { IS_GURDIAN } from '../../../config';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-// import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 
 import { AlertController } from '@ionic/angular';
@@ -62,7 +61,9 @@ export class LoginPage implements OnInit {
     const uid = await this.storage.get('uid');
     this.db.collection('users').doc(uid).valueChanges().subscribe((data: any) => {
       if ( data && data.status === 1 ) {
+        console.log(data);
         this.authRouting(data);
+        // location.href = '/';
       }
     });
   }

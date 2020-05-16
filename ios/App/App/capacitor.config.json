@@ -1,19 +1,20 @@
 {
-  "appId": "com.example.app",
-  "appName": "Liberty",
-  "bundledWebRuntime": false,
-  "npmClient": "yarn",
-  "webDir": "www",
-  "cordova": {
-    "preferences": {
-      "ScrollEnabled": "false",
-      "android-minSdkVersion": "19",
-      "BackupWebStorage": "none",
-      "SplashMaintainAspectRatio": "true",
-      "FadeSplashScreenDuration": "300",
-      "SplashShowOnlyFirstTime": "false",
-      "SplashScreen": "screen",
-      "SplashScreenDelay": "3000"
+    "appId": "com.liberty.guardian.app",
+    "appName": "Liberty（保護者）",
+    "bundledWebRuntime": false,
+    "npmClient": "yarn",
+    "webDir": "www",
+    "cordova": {
+      "preferences": {
+        "ScrollEnabled": "false",
+        "android-minSdkVersion": "19",
+        "BackupWebStorage": "none",
+        "SplashMaintainAspectRatio": "true",
+        "FadeSplashScreenDuration": "300",
+        "SplashShowOnlyFirstTime": "false",
+        "SplashScreen": "screen",
+        "SplashScreenDelay": "3000"
+      }
     }
   }
-}
+  

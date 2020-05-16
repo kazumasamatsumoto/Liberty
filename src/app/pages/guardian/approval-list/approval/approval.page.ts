@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { ChatRoomsService } from './../../../../services/chat-rooms.service';
 import { GuardianService } from './../../../../services/guardian.service';
 import { NavParamsService } from './../../../../services/nav-params.service';
 import { Component, OnInit } from '@angular/core';
+
 
 
 @Component({
@@ -18,7 +20,8 @@ export class ApprovalPage implements OnInit {
   constructor(
     public navParamsService: NavParamsService,
     public guardianService: GuardianService,
-    public chatRoomsService: ChatRoomsService
+    public chatRoomsService: ChatRoomsService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class ApprovalPage implements OnInit {
   statusChange() {
     this.chatRoomsService.guardianStatusChange(this.approval.id, this.guardianUser.id);
     this.chatRoomsService.statusCheck(this.approval.id);
+    this.router.navigateByUrl('/top-guardian');
   }
 
 }

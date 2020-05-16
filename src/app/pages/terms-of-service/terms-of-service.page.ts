@@ -54,10 +54,10 @@ export class TermsOfServicePage implements OnInit {
     const guardianStatus =  await this.db.collection('users').doc(uid).get().toPromise();
 
     // updateの文章
-    this.db.collection('users').doc(text).update({status: 1}); // ユーザー側
+    // this.db.collection('users').doc(text).update({status: 1}); // ユーザー側
     this.db.collection('users').doc(uid).update({status: 1}); // ガーディアン側
     this.db.collection(`users/${uid}/admin`).doc(text).set({ ref: uidStatus.ref });
-    this.db.collection('users').doc(text).set({ guardianRef: guardianStatus.ref }, { merge: true });
+    this.db.collection('users').doc(text).set({ status: 1,　guardianRef: guardianStatus.ref }, { merge: true });
     this.router.navigateByUrl('/');
   }
 

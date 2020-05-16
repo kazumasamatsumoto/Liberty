@@ -1,4 +1,4 @@
-import { DEBUG } from './../../../config-test';
+import { DEBUG } from '../../../config';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Storage } from '@ionic/storage';
 import { ActionSheetController, AlertController } from '@ionic/angular';
