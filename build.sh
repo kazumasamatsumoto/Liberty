@@ -12,8 +12,12 @@ cp capacitor.config.$1.json capacitor.config.json
 cd src/
 rm config.ts
 cp config.$1.ts config.ts
+cd ../android
+cp variables.$1.gradle variables.gradle
+cd ../android/app/src/main/res/values
+cp strings/strings.$1.xml strings.xml
 #  build
-cd ../
+cd ../../../../..
 ionic capacitor copy android --prod
 ionic capacitor copy ios --prod
 echo "Using environment config: $1"
