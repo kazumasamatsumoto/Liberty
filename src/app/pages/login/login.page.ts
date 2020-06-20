@@ -133,7 +133,7 @@ export class LoginPage implements OnInit {
                                 // 1: 連携済み（ユーザーと保護者の紐付けが完了している）
       is_guardian: IS_GURDIAN, // false: ユーザー、 true: ガーディアン
       top_image: {
-        path: 'assets/images/guardian_image/profile_top.png',
+        path: 'assets/images/stamps/animals/Group14.png',
       }
     };
 
